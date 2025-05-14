@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MvcWebApplication.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @(item.Status ? "Обучается" : "Отчислен")
+            </td>
+            <td>
+                @item.Age
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-name="@item.Name">Delete</a>
+            </td>
+                <td>
+                    <a asp-action="Details" asp-route-name="@item.Name">Детали</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
