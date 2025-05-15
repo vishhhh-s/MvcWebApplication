@@ -35,6 +35,9 @@ namespace MvcWebApplication.Controllers
         {
             var students = StudentRepository.GetAll();
             var student = students.FirstOrDefault(student=>student.Name==name);
+            if (student == null)
+                return NotFound();
+
             return View(student);
         }
     }
